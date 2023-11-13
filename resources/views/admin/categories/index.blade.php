@@ -78,7 +78,7 @@
                     @endif
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer clearfix">
+                <div class="card-footer clearfix pagination pagination-sm ml-2 float-right">
                     {{$categories->links()}}
                 </div>
                 <!-- /.card-footer-->
