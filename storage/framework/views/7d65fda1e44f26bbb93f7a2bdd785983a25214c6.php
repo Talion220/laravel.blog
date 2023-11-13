@@ -13,6 +13,7 @@
                             </span>
                         <?php endif; ?>
 
+
                         <?php if (is_array($element)): ?>
                             <?php $__currentLoopData = $element; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page => $url): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <?php if ($page == $paginator->currentPage()): ?>
