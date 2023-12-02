@@ -312,7 +312,10 @@
 </div>
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
 <script>
+
+    $('.select2').select2();
     $('.nav-sidebar a').each(function(){
+
        let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
        let  link = this.href;
        if(link == location){
@@ -320,6 +323,7 @@
            $(this).closest('.has-treeview').addClass('menu-open');
        }
     });
+
 </script>
 </body>
 </html>
