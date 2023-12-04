@@ -86,8 +86,11 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-//        $category = Category::find($id);
-//        $category->delete();
+        $tag = Tag::find($id);
+        if($tag->posts->count()){
+            return redirect()->route('tags.index')->with('error','Ошибка! У тега есть записи');
+        }
+        $tag->delete();
         Tag::destroy($id);
         return redirect()->route('tags.index')->with('success','Тег удален');
     }
