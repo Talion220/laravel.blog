@@ -418,7 +418,7 @@
   .select2-container--classic .select2-selection--multiple .select2-selection__clear {
     display: none; }
   .select2-container--classic .select2-selection--multiple .select2-selection__choice {
-    background-color: #007bff;
+    background-color: #5897fb;
     border: 1px solid #aaa;
     border-radius: 4px;
     cursor: default;
