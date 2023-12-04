@@ -6,6 +6,11 @@
     <title>AdminLTE 3 | Blank Page</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
+    <style>
+        .ck-editor__editable_inline{
+            min-height: 300px;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -318,12 +323,80 @@
 
        let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
        let  link = this.href;
-       if(link == location){
+       if(link == location ){
            $(this).addClass('active');
            $(this).closest('.has-treeview').addClass('menu-open');
        }
     });
 
 </script>
+
+<script src="{{asset('assets/admin/ckeditor/build/ckeditor.js')}}"></script>
+<script src="{{asset('assets/admin/ckfinder/ckfinder.js')}}"></script>
+
+<script>
+    let contentEditorElement = document.querySelector('#content');
+    if (contentEditorElement) {
+        ClassicEditor
+            .create(document.querySelector('#content'), {
+/*                simpleUpload: {
+
+                    uploadUrl: 'http://example.com',
+                },*/
+                toolbar: {
+                    items: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'indent',
+                        'outdent',
+                        'alignment',
+                        '|',
+                        'blockQuote',
+                        'insertTable',
+                        'undo',
+                        'redo',
+                        'imageUpload',
+                        'imageInsert',
+                        'mediaEmbed',
+                    ]
+                },
+                language: 'ru',
+                image: {
+                    toolbar: [
+                        'imageTextAlternative',
+                        // 'imageStyle:full',
+                        'imageStyle:side'
+                    ]
+                },
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
+    let descriptionEditorElement = document.querySelector('#description');
+    if (descriptionEditorElement) {
+        ClassicEditor
+            .create(document.querySelector('#description'), {
+                toolbar: ['|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo']
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
+</script>
+
 </body>
 </html>
