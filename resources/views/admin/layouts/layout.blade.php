@@ -381,8 +381,8 @@
                 image: {
                     toolbar: [
                         'imageTextAlternative',
-                        // 'imageStyle:full',
-                        'imageStyle:side'
+                        'imageStyle:full',
+                        'imageStyle:inline'
                     ]
                 },
                 table: {
