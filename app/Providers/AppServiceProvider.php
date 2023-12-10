@@ -43,5 +43,19 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('cats',$cats );
         });
+
+        view()->composer('layouts.navbar',function ($view){
+
+            if (Cache::has('cats_menu')){
+                $cats_menu = Cache::get('cats_menu');
+            }else{
+                $cats_menu = Category::withCount('posts')->orderBy('posts_count','desc')->get();
+                Cache::put('cats_menu',$cats_menu,5);
+            }
+
+//            $view->with('popular_posts',Post::orderBy('views','desc')->limit(3)->get());
+
+            $view->with('cats_menu',$cats_menu );
+        });
     }
 }

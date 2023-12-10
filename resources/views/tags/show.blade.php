@@ -64,7 +64,7 @@
         <div class="col-md-12">
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
-                    {{$posts->links()}}
+                    {{$posts->links('pagination::bootstrap-4')}}
                 </ul>
             </nav>
         </div><!-- end col -->

@@ -10,12 +10,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('categories.single',['slug'=>'marketing'])}}">Marketing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('categories.single',['slug'=>'make-money'])}}">Make Money</a>
-                    </li>
+                    @foreach($cats_menu as $cat_menu)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('categories.single',['slug'=>$cat_menu->slug])}}">{{$cat_menu->title}}</a>
+                        </li>
+                    @endforeach
+
                 </ul>
                 <form class="form-inline" method="get" action="{{route('search')}}">
                     <input name="s" class="form-control mr-sm-2 @error('s') is-invalid @enderror" type="text" placeholder="How may I help?" required>

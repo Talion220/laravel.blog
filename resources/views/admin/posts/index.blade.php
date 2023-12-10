@@ -83,7 +83,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix pagination pagination-sm ml-2 float-right">
-                    {{$posts->links()}}
+                    {{$posts->links('pagination::bootstrap-4')}}
                 </div>
                 <!-- /.card-footer-->
             </div>

@@ -25,7 +25,9 @@
 
     <div class="page-wrapper">
         <div class="blog-custom-build">
+            @if($posts->count())
             @foreach($posts as $post)
+
                 <div class="blog-box wow fadeIn">
                     <div class="post-media">
                         <a href="{{route('posts.single', ['slug'=>$post->slug])}}" title="">
@@ -55,6 +57,9 @@
 
                 <hr class="invis">
             @endforeach
+            @else
+                Нет ни одного поста с данной категорией...
+            @endif
         </div>
     </div>
 
@@ -64,7 +69,7 @@
         <div class="col-md-12">
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
-                    {{$posts->links()}}
+                    {{$posts->links('pagination::bootstrap-4')}}
                 </ul>
             </nav>
         </div><!-- end col -->
