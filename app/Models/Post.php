@@ -22,6 +22,14 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function commentsCount()
+    {
+        return $this->comments()->count();
+    }
     /**
      * Return the sluggable configuration array for this model.
      *

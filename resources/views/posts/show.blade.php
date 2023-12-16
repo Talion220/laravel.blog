@@ -57,13 +57,61 @@
                     @endforeach
                 </div><!-- end meta -->
             @endif
-            <div class="post-sharing">
-                <ul class="list-inline">
-                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                    <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                </ul>
-            </div><!-- end post-sharing -->
+                <hr class="invis1">
+
+                <div class="custombox clearfix">
+                    <h4 class="small-title">{{$post->commentsCount()}} Comments</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="comments-list">
+
+                                @foreach($post->comments as $comment)
+                                    <div class="media">
+                                        <a class="media-left" href="#">
+                                            <img src="upload/author.jpg" alt="" class="rounded-circle">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading user_name">{{$comment->name}} <small>{{$comment->getCommentDate()}}</small></h4>
+                                            <p>{{ $comment->comment }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+
+                            </div>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end custom-box -->
+
+                <hr class="invis1">
+
+                @if (Auth::check())
+                    <div class="custombox clearfix">
+                        <h4 class="small-title">Leave a comment</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form method="POST" action="{{ route('comments.store', $post->id) }}" class="form-wrapper">
+                                    @csrf
+                                    <input type="text" name="name" class="form-control" placeholder="Your name">
+
+                                    <textarea name="comment" class="form-control" placeholder="Your comment"></textarea>
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                    <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{route('login')}}" title="">Войдите, чтобы оставить комментарий</a>
+                @endif
+
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+
         </div><!-- end title -->
 
 

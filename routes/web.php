@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +36,4 @@ Route::group(['middleware'=>'guest'],function (){
 
 
 Route::get('/logout','UserController@logout')->name('logout')->middleware('auth');
+Route::post('/comments/{post}', 'CommentController@store')->name('comments.store');

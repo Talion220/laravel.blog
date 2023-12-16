@@ -16,9 +16,12 @@ class PostController extends Controller
 
     public function show($slug)
     {
-        $post = Post::where('slug',$slug)->firstOrFail();
-        $post->views+=1;
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $post->views += 1;
         $post->update();
+
+        // Загружаем комментарии связанные с текущим постом
+        $post->load('comments');
         return view('posts.show', compact('post'));
     }
 }
